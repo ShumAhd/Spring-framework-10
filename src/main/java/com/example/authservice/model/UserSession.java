@@ -9,10 +9,11 @@ import org.springframework.data.annotation.Id;
 
 @Entity
 @Data
-public class User {
+public class UserSession  {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+  private Long userId;
   private String username;
   private String password;
 
