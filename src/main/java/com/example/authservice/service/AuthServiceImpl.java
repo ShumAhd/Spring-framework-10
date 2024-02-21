@@ -4,6 +4,7 @@ import com.example.authservice.model.User;
 import com.example.authservice.model.UserSession;
 import com.example.authservice.repository.UserRepository;
 import com.example.authservice.repository.UserSessionRepository;
+import java.time.LocalDateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,11 @@ public class AuthServiceImpl implements AuthService {
 
   private static final Logger logger = LoggerFactory.getLogger(AuthServiceImpl.class);
 
-  private final UserRepository userRepository;
-  private final UserSessionRepository userSessionRepository;
+  @Autowired
+  private UserRepository userRepository;
+
+  @Autowired
+  private UserSessionRepository userSessionRepository;
 
   @Autowired
   public AuthServiceImpl(UserRepository userRepository, UserSessionRepository userSessionRepository) {
@@ -31,7 +35,16 @@ public class AuthServiceImpl implements AuthService {
 
   @Override
   public void login(String username, String password) {
-    // Логика входа пользователя
+    User user = userRepository.findByUsername(username);
+    if (user != null && user.getPassword().equals(password)) {
+      UserSession session = new UserSession();
+      session.setUserId(user.getId());
+      session.setLoggedInAt(LocalDateTime.now());
+      userSessionRepository.save(session);
+      System.out.println("User logged in: " + user.getUsername());
+    } else {
+      System.out.println("Invalid username or password");
+    }
   }
 
   @Override

@@ -1,30 +1,37 @@
-Фреймворк Spring (семинары)
-Урок 10. Spring Testing. JUnit и Mockito для написания тестов.
+# Фреймворк Spring (семинары)
+## Урок 10. Spring Testing. JUnit и Mockito для написания тестов.
 
-Домашнее задание
+#### Домашнее задание
 
 Разработайте тесты для службы аутентификации
-AuthService
-. Этот сервис имеет методы
-login(String username, String password)
+`AuthService`
+
+Этот сервис имеет методы
+`login(String username, String password)`
 ,
-register(User user)
+`register(User user)`
 и
-logout(Long userId)
-. Служба использует
-UserRepository
+`logout(Long userId)`
+
+Служба использует
+`UserRepository`
 для управления данными пользователя и
-SessionRepository
+`SessionRepository`
 для управления сессионными данными.
 
+
 Создайте mock-объекты для
-UserRepository
+`UserRepository`
 и
-SessionRepository
-.
+`SessionRepository`
+
+
 Напишите тест, который проверяет, что при успешной регистрации метод
-save
+`save`
 репозитория пользователя вызывается.
+
 Напишите тест, который проверяет, что при входе в систему для существующего пользователя создается новая сессия.
+
 Напишите тест, проверяющий корректное завершение сессии при выходе из системы.
-Желательно использовать spring security в работе
+
+Желательно использовать `spring security` в работе
