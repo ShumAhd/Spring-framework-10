@@ -56,3 +56,5 @@
 
 ### Тесты
 `AuthServiceTest:` Набор тестов для проверки функциональности сервиса аутентификации.
+
+![img](https://github.com/ShumAhd/Spring-framework-10/blob/main/img/2024-02-21_162833.jpg)
